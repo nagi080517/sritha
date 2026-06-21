@@ -1,0 +1,6 @@
+{
+  "name": "E-Commerce AI Daily Planner",
+  "description": "An AI-powered daily planner and analytics dashboard to analyze shopping trends, customer behavior, and sales data for e-commerce.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
