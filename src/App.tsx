@@ -10,8 +10,9 @@ import { Overview } from './components/Overview';
 import { SalesTrends } from './components/SalesTrends';
 import { CustomerProfiles } from './components/CustomerProfiles';
 import { InventoryInsights } from './components/InventoryInsights';
+import { ProfileDetails } from './components/ProfileDetails';
 
-type Tab = 'overview' | 'sales' | 'customers' | 'inventory';
+type Tab = 'overview' | 'sales' | 'customers' | 'inventory' | 'profile';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
@@ -22,6 +23,7 @@ export default function App() {
       case 'sales': return <SalesTrends />;
       case 'customers': return <CustomerProfiles />;
       case 'inventory': return <InventoryInsights />;
+      case 'profile': return <ProfileDetails />;
       default: return <Overview />;
     }
   };
@@ -57,13 +59,22 @@ export default function App() {
           <NavItem id="inventory" icon={Package} label="Inventory Insights" />
         </nav>
         <div className="mt-auto pt-6 border-t border-slate-800">
-          <div className="flex items-center gap-3">
-             <div className="w-10 h-10 rounded-full bg-blue-400 flex-shrink-0"></div>
-             <div>
-               <p className="text-sm font-bold text-white">Sritha</p>
-               <p className="text-xs text-slate-500">E-commerce Lead</p>
+          <button 
+            onClick={() => setActiveTab('profile')}
+            className={`w-full flex items-center gap-3 p-3 rounded-2xl transition-all duration-200 text-left ${
+              activeTab === 'profile' 
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30 font-semibold' 
+                : 'hover:bg-slate-800/80 text-slate-300'
+            }`}
+          >
+             <div className="w-10 h-10 rounded-full bg-blue-400 flex-shrink-0 flex items-center justify-center font-bold text-slate-900 shadow-inner">
+               S
              </div>
-          </div>
+             <div className="min-w-0 flex-1">
+               <p className={`text-sm font-bold truncate ${activeTab === 'profile' ? 'text-white' : 'text-white'}`}>Sritha</p>
+               <p className={`text-xs truncate ${activeTab === 'profile' ? 'text-blue-100' : 'text-slate-500'}`}>E-commerce Lead</p>
+             </div>
+          </button>
         </div>
       </aside>
 
